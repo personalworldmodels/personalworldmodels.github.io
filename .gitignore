@@ -1,3 +1,4 @@
 index-*.html
 DEPLOY.md
 assets/
+zenodo_upload.py
