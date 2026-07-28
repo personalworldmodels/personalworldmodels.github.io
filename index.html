@@ -60,7 +60,6 @@
   th, td { padding: 0.35em 1.4em; text-align: left; }
   td:last-child, th:last-child { text-align: right; }
   thead th { border-bottom: 1px solid #000; font-weight: normal; font-style: italic; }
-  tbody tr:first-child td { font-weight: bold; }
   tbody tr:last-child td { padding-bottom: 0.5em; }
   table { border-bottom: 1px solid #000; }
 
@@ -87,6 +86,7 @@
     border: 1px solid #aaa; border-radius: 50%;
     word-spacing: normal;
   }
+  b { font-weight: normal; font-variant: small-caps; letter-spacing: 0.05em; }
   small { font-size: 15px; color: #555; }
   a { color: #000; }
   a:hover { text-decoration: none; }
@@ -119,7 +119,7 @@
 
   <div class="narrow">
     <h2>Abstract</h2>
-    <p>Memory is a compression problem. Current systems treat it as retrieval, which can say what happened but not what it means or what comes next. We introduce the <b>Personal World Model (PWM)</b>: a life compressed the way a map compresses territory &mdash; what recurs becomes structure, and any model can read the structure and anticipate from it. <b>GOLGI</b> instantiates the framework: it ingests a real four-week photo archive, 720K tokens of raw life, into anchored entities, routines, and narratives an agent traverses in hundreds of tokens, on a pipeline that runs end-to-end on 4B on-device models. The agent reading the structure answers personal-history questions better than one searching the raw archive; corrupt the structure and the advantage collapses; the same structure predicts moments it never observed. Built once, read by any model, owned by the person.</p>
+    <p>Memory is a compression problem. Current systems treat it as retrieval, which can say what happened but not what it means or what comes next. We introduce the <b>Personal World Model (pwm)</b>: a life compressed the way a map compresses territory &mdash; what recurs becomes structure, and any model can read the structure and anticipate from it. <b>Golgi</b> instantiates the framework: it ingests a real four-week photo archive, 720K tokens of raw life, into anchored entities, routines, and narratives an agent traverses in hundreds of tokens, on a pipeline that runs end-to-end on 4B on-device models. The agent reading the structure answers personal-history questions better than one searching the raw archive; corrupt the structure and the advantage collapses; the same structure predicts moments it never observed. Built once, read by any model, owned by the person.</p>
   </div>
 
   <h2>Earned by recurrence</h2>
@@ -146,7 +146,7 @@
   <table>
     <thead><tr><th>Memory layer</th><th>Correctness</th></tr></thead>
     <tbody>
-      <tr><td>GOLGI</td><td>46</td></tr>
+      <tr><td><b>Golgi</b></td><td><strong>46</strong></td></tr>
       <tr><td>GraphRAG</td><td>30</td></tr>
       <tr><td>Supermemory</td><td>29</td></tr>
       <tr><td>Matched flat-retrieval control</td><td>19</td></tr>
