@@ -15,29 +15,62 @@
   main {
     max-width: 30em;
     margin: 0 auto;
-    padding: 26vh 24px 20vh;
+    padding: 24vh 24px 14vh;
   }
+  .label {
+    position: relative;
+    display: inline-block;
+    padding: 2.4em 2.6em;
+    margin: 0 -2.6em 3em;
+  }
+  .label i {
+    position: absolute;
+    width: 10px;
+    height: 1px;
+    background: #c9c9c9;
+  }
+  .label i:nth-child(1) { top: 0.9em;    left: 0.9em;  transform: rotate(-38deg); }
+  .label i:nth-child(2) { top: 0.9em;    right: 0.9em; transform: rotate(41deg); }
+  .label i:nth-child(3) { bottom: 0.9em; left: 0.9em;  transform: rotate(39deg); }
+  .label i:nth-child(4) { bottom: 0.9em; right: 0.9em; transform: rotate(-40deg); }
   h1 {
     font-size: 26px;
     font-weight: normal;
-    margin: 0 0 2.5em;
+    margin: 0 0 1.4em;
     letter-spacing: 0.01em;
   }
+  .authors { margin: 0; }
   p { margin: 0 0 2.5em; }
-  .authors { margin-bottom: 5em; }
   ul { list-style: none; margin: 0; padding: 0; }
   li { margin-bottom: 0.6em; }
   a { color: #000; }
   a:hover { text-decoration: none; }
   small { font-size: 15px; color: #555; }
+  .line {
+    margin-top: 9em;
+    font-size: 11px;
+    color: #aaa;
+    word-spacing: 0.55em;
+    text-align: center;
+  }
+  .line b {
+    font-weight: normal;
+    display: inline-block;
+    width: 1.5em;
+    line-height: 1.5em;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    word-spacing: normal;
+  }
 </style>
 </head>
 <body>
 <main>
-  <h1>Personal World Models</h1>
-
-  <p class="authors">Hana Azab &middot; Mar&iacute;a Benavente<br>
-  <small>Kinship</small></p>
+  <div class="label"><i></i><i></i><i></i><i></i>
+    <h1>Personal World Models</h1>
+    <p class="authors">Hana Azab &middot; Mar&iacute;a Benavente<br>
+    <small>Kinship</small></p>
+  </div>
 
   <p>Memory is a compression problem. A Personal World Model compresses a life into abstractions earned by recurrence, committed once at ingestion, so that any model can read, navigate, and anticipate from the structure.</p>
 
@@ -45,6 +78,8 @@
     <li><a href="pwm.pdf">Paper</a> <small>(PDF)</small></li>
     <li><a href="golgi-0.1.0-macos-arm64.zip">Package</a> <small>(GOLGI 0.1.0, macOS&nbsp;arm64, Python&nbsp;3.12)</small></li>
   </ul>
+
+  <p class="line"><b>0</b> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</p>
 </main>
 </body>
 </html>
