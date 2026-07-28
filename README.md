@@ -9,7 +9,7 @@ Kinship Technologies
   <img src="figures/framework.png" width="85%" alt="The Personal World Model as a general, model-agnostic layer between a life and any model.">
 </p>
 
-Memory is a compression problem. Current systems treat it as retrieval, which can say what happened but not what it means or what comes next. A **Personal World Model (PWM)** is a life compressed the way a cartographer compresses territory: what recurs becomes structure, and any model can read the structure and anticipate from it. **GOLGI** instantiates the framework: it ingests a real four-week photo archive — 720K tokens of raw life — into anchored entities, routines, and narratives an agent traverses in hundreds of tokens, on a pipeline that runs end-to-end on 4B on-device models.
+Memory is a compression problem. Current systems treat it as retrieval, which can say what happened but not what it means or what comes next. A **Personal World Model (PWM)** is a life compressed the way a map compresses territory: what recurs becomes structure, and any model can read the structure and anticipate from it. **GOLGI** instantiates the framework: it ingests a real four-week photo archive — 720K tokens of raw life — into anchored entities, routines, and narratives an agent traverses in hundreds of tokens, on a pipeline that runs end-to-end on 4B on-device models.
 
 ## Results
 
