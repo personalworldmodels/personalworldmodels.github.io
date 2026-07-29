@@ -3,7 +3,7 @@
 **Hana Azab · María Benavente**
 Kinship Technologies
 
-[**Paper (PDF)**](https://personalworldmodels.github.io/pwm.pdf) · [**Project page**](https://personalworldmodels.github.io) · [**Package**](https://personalworldmodels.github.io/golgi-0.1.0-macos-arm64.zip) · [**Supplement**](supplement/README.md)
+[**Paper (PDF)**](https://personalworldmodels.github.io/pwm.pdf) · [**Project page**](https://personalworldmodels.github.io) · [**Package**](https://personalworldmodels.github.io/golgi-0.1.0-macos-arm64.zip) · [**Supplement**](docs/supplement/README.md)
 
 <p align="center">
   <img src="figures/framework.png" width="85%" alt="The Personal World Model as a general, model-agnostic layer between a life and any model.">
