@@ -143,21 +143,20 @@
 
   <figure class="wide hero"><img src="figures/framework.png" width="1919" height="836" style="height:auto" alt="The Personal World Model as a general, model-agnostic layer."></figure>
 
-  <h2 class="abshead">Abstract</h2>
-  <p class="abstract">Memory is a compression problem. Current systems treat it as retrieval, which can say what happened but not what it means or what comes next. We introduce the Personal World Model (PWM): a life compressed the way a map compresses territory: what recurs becomes structure, and any model can read the structure and anticipate from it. GOLGI instantiates the framework: it ingests a real four-week photo archive, 720K tokens of raw life, into anchored entities, routines, and narratives an agent traverses in hundreds of tokens, on a pipeline that runs end-to-end on 4B on-device models. The agent reading the structure answers personal-history questions better than one searching the raw archive; corrupt the structure and the advantage collapses; the same structure predicts moments it never observed. Built once, read by any model, owned by the person.</p>
-
   <section class="tldr">
   <p class="tl-head"><b>tl;dr</b></p>
   <ul>
-    <li>Memory is a compression problem. Retrieval says what happened; it cannot say what recurs, what it means, or what comes next.</li>
-    <li>A <b>Personal World Model</b> compresses a life into structure &mdash; routines, relationships, narratives &mdash; committed once at ingestion, readable by any AI.</li>
-    <li><b>Golgi</b>, our engine, turns 720K tokens of raw photos into a structure agents traverse in hundreds of tokens.</li>
-    <li>Our engine outperforms every production memory system we tested &mdash; GraphRAG, Supermemory, Mem0, Zep &mdash; scoring 46 on a 0&ndash;100 judged-correctness scale where GraphRAG scores 30 and Zep 6. On questions that span a lifetime, every baseline scores zero.</li>
-    <li>The advantage is causal: corrupt the structure and answer quality collapses in proportion (<i>r</i> = 0.81).</li>
-    <li>The same structure predicts masked, unseen moments (32% vs 0%), and the whole pipeline runs on-device on 4B models.</li>
-    <li>The paper, a runnable package, and the full evaluation supplement are released below.</li>
+    <li>Your photos record your life, but AI can only <i>search</i> them &mdash; it can find a moment, it cannot know your life. What repeats &mdash; your routines, your people, your places &mdash; exists in no single photo, so no search will ever surface it.</li>
+    <li>We built the <b>Personal World Model</b>: a system that turns a raw photo archive into a compact model of a life &mdash; the patterns, not just the pictures &mdash; computed once, then readable by any AI.</li>
+    <li>With it, an assistant can answer questions about your life, plan around habits it was never told about, and anticipate what comes next &mdash; without ever seeing your raw photos.</li>
+    <li>It runs entirely on your own device, and the model belongs to you: it travels between AI assistants instead of being trapped inside one company&rsquo;s app.</li>
+    <li>Tested against the leading memory systems (GraphRAG, Supermemory, Mem0, Zep), ours answers personal-history questions best &mdash; and on questions that span a lifetime (&ldquo;when did I start&hellip;&rdquo;), every existing system fails completely.</li>
+    <li>The full paper, a runnable engine, and the evaluation materials are released on this page.</li>
   </ul>
 </section>
+
+  <h2 class="abshead">Abstract</h2>
+  <p class="abstract">Memory is a compression problem. Current systems treat it as retrieval, which can say what happened but not what it means or what comes next. We introduce the Personal World Model (PWM): a life compressed the way a map compresses territory: what recurs becomes structure, and any model can read the structure and anticipate from it. GOLGI instantiates the framework: it ingests a real four-week photo archive, 720K tokens of raw life, into anchored entities, routines, and narratives an agent traverses in hundreds of tokens, on a pipeline that runs end-to-end on 4B on-device models. The agent reading the structure answers personal-history questions better than one searching the raw archive; corrupt the structure and the advantage collapses; the same structure predicts moments it never observed. Built once, read by any model, owned by the person.</p>
 
   <article class="col">
 <h2><span class="no">1</span>Introduction</h2>
