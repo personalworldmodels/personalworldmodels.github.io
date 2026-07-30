@@ -146,13 +146,14 @@
   <section class="tldr">
   <p class="tl-head"><b>tl;dr</b></p>
   <ul>
-    <li>Your life is recorded everywhere, but AI can only <i>search</i> the records: it can find a moment, it cannot know your life. What repeats (your routines, your people, your places) exists in no single fragment, and no search will ever surface it.</li>
-    <li>We built the <b>Personal World Model</b>: a persistent model of a life, compressed from raw experience into structure any model can read. It begins with photos; the architecture extends to every modality a life leaves behind.</li>
-    <li>No system today carries a persistent understanding of a person&rsquo;s space and time. A world model whose world is a life is the seed of that understanding, and a precursor to the universal world models the field is reaching for.</li>
-    <li>First-person understanding matters twice: it gives an agent the perspective of your life (what a moment means against its patterns) and the grounding to act on your behalf.</li>
-    <li>It runs entirely on your own device and belongs to you: the model travels between assistants instead of being trapped inside one company&rsquo;s app.</li>
-    <li>Tested against the leading memory systems (GraphRAG, Supermemory, Mem0, Zep), ours answers personal-history questions best. On questions that span a lifetime, every existing system fails completely.</li>
-    <li>The full paper, a runnable engine, and the evaluation materials are released on this page.</li>
+    <li>Your life is recorded everywhere. AI can only search the records: it can find a moment, it cannot know your life.</li>
+    <li>We built the <b>Personal World Model</b>: a life compressed into structure any model can read and anticipate from. Photos first; every modality a life leaves behind, next.</li>
+    <li>Tested on a real life against GraphRAG, Supermemory, Mem0, and Zep: we score 46 of 100. GraphRAG scores 30. Zep scores 6. On questions that span a lifetime, every baseline scores zero.</li>
+    <li>The advantage is causal: corrupt the structure and answers collapse in proportion (<i>r</i> = 0.81).</li>
+    <li>It predicts moments it never saw: 32% where the baseline reaches 0%.</li>
+    <li>The whole pipeline runs on a 4B model on your own device. Nothing leaves. The model is yours, and it moves with you.</li>
+    <li>No system on earth holds a persistent model of a person&rsquo;s space and time. This is the seed, and a precursor to universal world models.</li>
+    <li>Paper, engine, evaluation harness: released, below.</li>
   </ul>
 </section>
 
