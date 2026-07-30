@@ -35,7 +35,7 @@
   .label i:nth-child(3) { bottom: 1em; left: 1em; transform: rotate(39deg); }
   .label i:nth-child(4) { bottom: 1em; right: 1em; transform: rotate(-40deg); }
   h1 { font-size: 40px; font-weight: normal; margin: 0 0 0.7em; letter-spacing: 0.01em; }
-  .authors { margin: 0 0 0.3em; font-size: 19px; }
+  .authors { margin: 0 0 0.3em; font-size: 18px; }
   .affil { color: #555; font-size: 16px; margin: 0; }
   .affil a, .authors a { color: inherit; }
   .buttons { text-align: center; margin: 0 0 3em; }
@@ -48,7 +48,7 @@
     padding: 1.1em 0 1.2em; margin: 0 0 3em; }
   .tl-head { margin: 0 0 0.5em; }
   .tldr ul { margin: 0; padding-left: 1.2em; }
-  .tldr li { margin-bottom: 0.45em; font-size: 16.5px; line-height: 1.55; }
+  .tldr li { margin-bottom: 0.45em; font-size: 16px; line-height: 1.55; }
 
   b { font-weight: normal; font-variant: small-caps; letter-spacing: 0.05em; }
   b.runin { font-variant: normal; font-style: italic; letter-spacing: 0; }
@@ -79,6 +79,7 @@
   figure img { width: 100%; display: block; }
   figcaption { font-size: 14px; color: #555; margin-top: 0.7em; }
 
+  .twrap { overflow-x: auto; }
   table { border-collapse: collapse; margin: 1.6em 0 0.4em; font-size: 17px; border-bottom: 1px solid #111; }
   th, td { padding: 0.3em 1.3em 0.3em 0; text-align: left; }
   td:last-child, th:last-child { text-align: right; }
@@ -99,25 +100,28 @@
   a { color: #111; }
   a:hover { text-decoration: none; }
 
-  .fade { opacity: 0.12; transition: opacity 0.55s ease; }
+  .fade { opacity: 0.15; transition: opacity 0.6s ease; }
   .fade.vis { opacity: 1; }
   @media (prefers-reduced-motion: reduce) { .fade { opacity: 1; transition: none; } }
 
   @media (max-width: 1080px) {
-    aside.mn { float: none; width: auto; margin: 1.1em 0; padding: 0.6em 0 0; }
-    aside.mn.side-mark { border-top: 1px solid #c9c9c9; }
-    figure.wide { max-width: 33em; }
+    aside.mn { float: none; width: auto; margin: 1.3em 0; padding: 0 0 0 1em;
+      border-top: none; border-left: 1px solid #c9c9c9; color: #555; }
+    aside.mn.key, aside.mn.num { color: #555; }
+    aside.mn.side-mark { display: none; }
   }
   @media (max-width: 640px) {
     body { font-size: 16px; }
     .sheet { padding-top: 3vh; }
-    h1 { font-size: clamp(20px, 7.2vw, 30px); white-space: nowrap; margin-bottom: 0.5em; }
+    h1 { font-size: clamp(26px, 8vw, 34px); margin-bottom: 0.5em; }
     .label { padding: 1.6em 1.2em; margin-bottom: 0.4em; }
     .authors { font-size: 15px; } .affil { font-size: 13px; }
     .buttons { margin-bottom: 1.6em; }
     .buttons a { font-size: 13.5px; padding: 0.3em 1em; margin: 0.15em 0.2em; }
     th, td { padding: 0.3em 0.7em 0.3em 0; }
-    .line { font-size: 9px; word-spacing: 0.3em; white-space: nowrap; margin-top: 5em; }
+    .tldr li { font-size: 15px; }
+    table { font-size: 15px; }
+    .line { font-size: 9px; word-spacing: 0.3em; white-space: nowrap; overflow: hidden; margin-top: 3em; }
     .line b { width: 1.4em; line-height: 1.4em; }
   }
 </style>
@@ -133,13 +137,13 @@
 
   <div class="buttons">
     <a href="pwm.pdf">Paper</a>
-    <a href="supplement/README.md">Supplement</a>
+    <a href="https://github.com/personalworldmodels/personalworldmodels.github.io/tree/main/docs/supplement">Supplement</a>
     <a href="golgi-0.1.0-macos-arm64.zip">Package</a>
     <a href="https://doi.org/10.5281/zenodo.21655904">DOI</a>
     <a href="#bibtex">BibTeX</a>
   </div>
 
-  <figure class="wide hero"><img src="figures/framework.png" alt="The Personal World Model as a general, model-agnostic layer."></figure>
+  <figure class="wide hero"><img src="figures/framework.png" width="1919" height="836" style="height:auto" alt="The Personal World Model as a general, model-agnostic layer."></figure>
 
   <h2 class="abshead">Abstract</h2>
   <p class="abstract">Memory is a compression problem. Current systems treat it as retrieval, which can say what happened but not what it means or what comes next. We introduce the Personal World Model (PWM): a life compressed the way a map compresses territory: what recurs becomes structure, and any model can read the structure and anticipate from it. GOLGI instantiates the framework: it ingests a real four-week photo archive, 720K tokens of raw life, into anchored entities, routines, and narratives an agent traverses in hundreds of tokens, on a pipeline that runs end-to-end on 4B on-device models. The agent reading the structure answers personal-history questions better than one searching the raw archive; corrupt the structure and the advantage collapses; the same structure predicts moments it never observed. Built once, read by any model, owned by the person.</p>
@@ -183,12 +187,12 @@
 <h2>GOLGI</h2>
 <blockquote class="lede">GOLGI instantiates the PWM framework: it abstracts a personal photo archive into a navigable hierarchy at ingestion time and exposes it to agents through a standard tool surface (MCP).</blockquote>
 <aside class="mn side-mark">III &middot; The engine</aside><p>GOLGI is currently implemented up to the Experience layer, over a single modality: personal photos. Following the PWM's principle of abstracting knowledge through accumulated repetition, GOLGI builds the hierarchy at ingestion time (Figure 2) and exposes it through the Model Context Protocol (MCP). The distinction is when the work happens: the abstractions are computed once, at ingestion, and persisted to disk. At query time an agent does not load the archive into its context window; it reads the already-built structure on demand through MCP tools (the PDF appendix), retrieving only what a question needs.</p>
-<figure class="wide"><img src="figures/pipeline.png" alt=""><figcaption>Figure 2. GOLGI's ingestion pipeline. A photo enters as a Moment, Primitives are extracted per moment, recurring Primitives are promoted to Anchors with user confirmation, and the anchored stream is synthesized into Narratives along two streams. &#9312;&ndash;&#9315; mark the four capabilities evaluated in &sect;4.2.</figcaption></figure>
+<figure class="wide"><img src="figures/pipeline.png" width="2133" height="772" loading="lazy" style="height:auto" alt=""><figcaption>Figure 2. GOLGI's ingestion pipeline. A photo enters as a Moment, Primitives are extracted per moment, recurring Primitives are promoted to Anchors with user confirmation, and the anchored stream is synthesized into Narratives along two streams. &#9312;&ndash;&#9315; mark the four capabilities evaluated in &sect;4.2.</figcaption></figure>
 <p>We walk through the pipeline using one month of a user's phone photos, exported from a personal camera roll. The framework extends to other modalities (video, audio, journal entries), and the cost differs by modality. Location data is the cheapest to add: it already arrives structured, and it maps directly onto the structures GOLGI builds, since Trips and place-Anchors are defined by location to begin with. Communication data is the most valuable, because relationships largely live in it, but it raises third-party consent questions beyond those the Ethics Statement addresses for photos.</p>
-<p>Each photo enters the system as a <b>Moment</b>. A vector database (LanceDB<aside class="mn">LanceDB is an open-source columnar vector database. <code>https://lancedb.com/</code></aside>) stores its visual information and a short text description; a graph database (K&ugrave;zuDB<aside class="mn">K&ugrave;zuDB is an embedded property graph database (Feng et al., 2023). <code>https://kuzudb.com/</code></aside>) stores the identified entities: faces, objects, activities, spaces, text. These features are <b>Primitives</b>, and at this stage everything is anonymous: a face is a face, a room is a room.</p>
+<aside class="mn">LanceDB is an open-source columnar vector database. <code>https://lancedb.com/</code></aside><aside class="mn">K&ugrave;zuDB is an embedded property graph database (Feng et al., 2023). <code>https://kuzudb.com/</code></aside><p>Each photo enters the system as a <b>Moment</b>. A vector database (LanceDB) stores its visual information and a short text description; a graph database (K&ugrave;zuDB) stores the identified entities: faces, objects, activities, spaces, text. These features are <b>Primitives</b>, and at this stage everything is anonymous: a face is a face, a room is a room.</p>
 <aside class="mn">Recurrence gates: a place becomes an Anchor after 3 moments across 2 distinct days; a face after 2 appearances across 2 days. The user confirms and names.</aside><p>As Moments accumulate, patterns surface across their Primitives: the same faces keep appearing, the same places keep recurring. When a pattern accumulates enough recurrence to clear a threshold and a validation step confirms it, GOLGI promotes it to a candidate <b>Anchor</b> and presents it to the user for confirmation and naming. Over the month, one face becomes the user themself, two cat faces become Perseida and Borealis, and the residential space is confirmed as home. Confirmed Anchors are stored as graph nodes that hold the identity of recurring entities across the archive. This confirmation loop is the first step toward a coherence mechanism in which the system itself proposes what to confirm and what to retire, continually re-evaluating its knowledge of the person.</p>
 <p>One abstraction layer completes the Experience layer of the PWM: the <b>Narrative</b> of what is happening. By this stage each Moment carries the resolved identities of the entities it contains, so Narratives are synthesized over known people and places.</p>
-<li>GOLGI synthesizes Narratives along two parallel streams: an event-wise stream and a temporal stream:</p>
+<p>GOLGI synthesizes Narratives along two parallel streams: an event-wise stream and a temporal stream:</p>
 <ul>
 <li>The <b>event-wise stream</b> groups Moments by <i>what</i> happened, clustering those that share similarity and temporal proximity into <b>Plans</b>: coherent episodes like a morning coffee, a hike, a dinner. Because Moments are already anchored, a Plan knows who was there and where it happened. Plans aggregate into <b>Projects</b> (Plans circling a goal), <b>Trips</b> (geographically bounded Plans), and <b>Routines</b> (Plans that recur).</li>
 <li>The <b>temporal stream</b> groups Moments by <i>when</i> they happened. It segments the archive into perceptual days (days as a person lives them) and synthesizes each one into a <b>Chronicle</b>: a journal-style summary of what happened. Chronicles aggregate upward into weeks, months, quarters, and years.</li>
@@ -202,7 +206,7 @@
 <p>This subsection is a structural result: it establishes that the hierarchy can be built at archive scale and measures the compression it achieves. It makes no benefit claim; the benefit comparison is &sect;4.3.</p>
 <aside class="mn key">The data: 450 photos, four weeks of one author&rsquo;s life, unsampled and unlabeled &mdash; then 686 moments for the benchmark.</aside><p>The archive is one of the authors' own camera roll: 450 photos exported directly from an iPhone, covering February 3 to March 2, 2025. Four weeks of life as it was lived and photographed, unsampled and unlabeled.</p>
 <p>GOLGI ingests it into the full Experience hierarchy (Figure 3): 41 Plans identified (e.g., <i>Workday in the office</i>, <i>Pottery class</i>), with Trips aggregating multi-day arcs (<i>Wine country weekend</i>), Routines promoted from recurrence (<i>Morning walk and coffee</i>). Every node links downward to its constituent Moments and sideways to the Anchors it draws on.</p>
-<figure class="wide"><img src="figures/structure.png" alt=""><figcaption>Figure 3. From log to structure. Moments arrive as an undifferentiated log; recurrence and proximity group them into Plans; recurring and related Plans aggregate into Collections &mdash; Trips, Routines, Projects.</figcaption></figure>
+<figure class="wide"><img src="figures/structure.png" width="1748" height="544" loading="lazy" style="height:auto" alt=""><figcaption>Figure 3. From log to structure. Moments arrive as an undifferentiated log; recurrence and proximity group them into Plans; recurring and related Plans aggregate into Collections &mdash; Trips, Routines, Projects.</figcaption></figure>
 <aside class="mn num">720K tokens of raw archive &rarr; hundreds of tokens traversed per question. The archive grows with life; the structure grows with its patterns.</aside><p>The measurable claim is the compression and how it scales. At the resolution needed for meaningful inspection the raw archive is around 720K tokens; the structure an agent traverses to answer a question is measured in hundreds. And the two grow differently. The archive grows linearly with life &mdash; a year already exceeds 8M tokens and any context window with it &mdash; while the structure grows with the patterns in a life. Ingestion computes the understanding once and persists it as the substrate from which the next layer up, and eventually Identity and Worldview, is promoted.</p>
 <h3>Downward: Bounded Capability Demands per Layer</h3>
 <blockquote class="lede">Implementing the Experience layer decomposes into four bounded capabilities, and the abstraction is efficient enough that all of them run on modest models: a lightweight cloud model as reference, and 4B on-device at parity with it, up to 82% end-to-end.</blockquote>
@@ -212,15 +216,15 @@
 <blockquote class="lede">On personal-history questions, an agent over the committed structure more than doubles a matched flat-retrieval agent and beats every production memory system on the same archive &mdash; and degrading the structure degrades the agent with it.</blockquote>
 <p>&sect;4.1 shows the structure is smaller than the archive; it does not show an agent answers better over it. We test that directly, on the same subject's archive expanded to 686 moments (the &sect;4.1 month is a subset).</p>
 <aside class="mn">Fixed answer model, fixed judge, seven memory systems &mdash; the only variable is the memory layer.</aside><p>We pose 50 questions spanning five categories: specific events, recurring patterns, lifetime spans (&ldquo;when did I start&hellip;&rdquo;, &ldquo;how long&hellip;&rdquo;), multi-source synthesis, and counterfactuals. Two models play fixed roles: an <i>answer</i> model (Gemini 3.5 Flash) generates every system's answer, and a separate <i>judge</i> model (Gemini 2.5 Flash) scores every answer against a 0&ndash;100 rubric (prompts and rubrics released with the harness). Both are held constant across all systems, so the only variable is the memory layer. We compare GOLGI against a matched flat-retrieval control &mdash; the same embedder, query rewriting, retrieval breadth, and synthesis budget, differing only in having no committed structure &mdash; and against production memory systems ingesting the same textified archive: Mem0, Zep, Supermemory, and GraphRAG (Edge et al., 2024).</p>
-<table><thead><tr><th>Memory layer</th><th>Correctness</th></tr></thead>
+<div class="twrap"><table><thead><tr><th>Memory layer</th><th>Correctness</th></tr></thead>
 <tbody><tr><td><b>Golgi</b></td><td>46</td></tr><tr><td>GraphRAG</td><td>30</td></tr>
 <tr><td>Supermemory</td><td>29</td></tr><tr><td>Matched flat-retrieval control</td><td>19</td></tr>
 <tr><td>Flat retrieval (vanilla)</td><td>17</td></tr><tr><td>Mem0</td><td>15</td></tr>
-<tr><td>Zep</td><td>6</td></tr></tbody></table>
+<tr><td>Zep</td><td>6</td></tr></tbody></table></div>
 <p class="tablecap">Correctness is a 0&ndash;100 LLM-judged score averaged over 50 personal-history questions, one fixed answer model and judge; only the memory layer varies.</p>
 <aside class="mn num">On lifetime-span questions &mdash; &ldquo;when did I start&hellip;&rdquo;, &ldquo;how long&hellip;&rdquo; &mdash; every baseline scores zero.</aside><p>GOLGI scores 46 against 19 for the matched control, and beats every production system (the table). The gap concentrates exactly where the framework says it should &mdash; on questions whose answers are patterns. On recurring-pattern questions GOLGI scores 70 against 17&ndash;30 for every baseline; on lifetime-span questions every baseline, including GraphRAG, scores zero, because the answer exists in no retrievable fragment. This is the Tuesday-dinner distinction of &sect;2, measured.</p>
-<p>Two honest notes. The judge flags GOLGI for unsupported specifics far more often than the flat control (0.66 vs.\ 0.28). A manual audit of all 33 flagged answers against the full archive, however, attributes most flags to the instrument rather than the answer: in 27, the flagged specifics &mdash; places, dates, objects &mdash; exist in the archive but fell outside the judge's corpus view; four added correct world knowledge (naming the author of a photographed book) or the answer's own thematic labels; one to two genuinely fabricated (an invented biographical claim). Judge-flagged hallucination rates over personal archives should therefore be read as upper bounds; the same instrument limitation applies to every system's rate. Calibrated abstention, and a judge with full-archive visibility, remain open work. And the largest available models, given the raw archive in a million-token context, match or exceed this quality &mdash; at roughly 720K tokens and 26 seconds per query, the regime &sect;4.1 shows cannot scale with a life.</p>
-<aside class="mn key">The sabotage test. Rebuild the structure 36 times, each more corrupted; answer quality falls in step with fidelity (<i>r</i> = 0.81). The clusters must be <i>true</i>, not merely present.</aside><p>A last worry: maybe the credit belongs to the answer model, not the structure. We test this by sabotage. We rebuild GOLGI's structure many times, each version deliberately more corrupted than the last &mdash; moments reassigned to groups where they do not belong &mdash; and run the same agent over each one, following graded-corruption evaluation (Zhou et al., 2025). If the answer model were doing the work, quality would survive the damage. It does not: answer quality falls in step with the structure's fidelity (<i>r  =  0.81</i> across 36 corrupted variants, permutation <i>p &lt; 10<sup>&minus;3</sup></i>). A control separates true structure from mere clustering: groupings that are random but have the same size and shape as the real ones give the agent almost nothing (0.055 vs.\ 0.31 retrieval). What carries the benefit is not that the archive is clustered. It is that the clusters are true.</p>
+<p>Two honest notes. The judge flags GOLGI for unsupported specifics far more often than the flat control (0.66 vs. 0.28). A manual audit of all 33 flagged answers against the full archive, however, attributes most flags to the instrument rather than the answer: in 27, the flagged specifics &mdash; places, dates, objects &mdash; exist in the archive but fell outside the judge's corpus view; four added correct world knowledge (naming the author of a photographed book) or the answer's own thematic labels; one to two genuinely fabricated (an invented biographical claim). Judge-flagged hallucination rates over personal archives should therefore be read as upper bounds; the same instrument limitation applies to every system's rate. Calibrated abstention, and a judge with full-archive visibility, remain open work. And the largest available models, given the raw archive in a million-token context, match or exceed this quality &mdash; at roughly 720K tokens and 26 seconds per query, the regime &sect;4.1 shows cannot scale with a life.</p>
+<aside class="mn key">The sabotage test. Rebuild the structure 36 times, each more corrupted; answer quality falls in step with fidelity (<i>r</i> = 0.81). The clusters must be <i>true</i>, not merely present.</aside><p>A last worry: maybe the credit belongs to the answer model, not the structure. We test this by sabotage. We rebuild GOLGI's structure many times, each version deliberately more corrupted than the last &mdash; moments reassigned to groups where they do not belong &mdash; and run the same agent over each one, following graded-corruption evaluation (Zhou et al., 2025). If the answer model were doing the work, quality would survive the damage. It does not: answer quality falls in step with the structure's fidelity (<i>r  =  0.81</i> across 36 corrupted variants, permutation <i>p &lt; 10<sup>&minus;3</sup></i>). A control separates true structure from mere clustering: groupings that are random but have the same size and shape as the real ones give the agent almost nothing (0.055 vs. 0.31 retrieval). What carries the benefit is not that the archive is clustered. It is that the clusters are true.</p>
 <h3>Active Anticipation</h3>
 <blockquote class="lede">The same structure that answers questions also anticipates: a moment the model has never seen is predicted from the places a life recurs through &mdash; a world-model property, not retrieval.</blockquote>
 <aside class="mn num">Mask a fifth of the archive: conditioning on the places a life recurs through retrieves the exact unseen moment 32% of the time. Structure-free baseline: 0%.</aside><p>Querying reconstructs the past; a world model predicts the unobserved (Ha &amp; Schmidhuber, 2018; LeCun, 2022). We test anticipation directly (PDF Appendix B): we mask a random fifth of a subject's moments and predict each unseen moment's visual embedding from the rest. Predicting from the places the structure anchors, the model retrieves the <i>exact</i> unseen moment 32% of the time where a structure-free baseline reaches 0% and chance is under 1%, and the effect replicates in a second visual encoder and a second subject. We also report the honest boundary: predicting from raw location metadata alone does about as well, so this evidences a world-model <i>property</i> &mdash; prediction far above a structure-free floor &mdash; not that the substrate's anchoring is its mechanism. A user-facing form of the same predictor, which scrubs a life forward to anticipate the next moment (the Oracle), we demonstrate interactively rather than evaluate here.</p>
@@ -249,7 +253,7 @@
 <aside class="mn side-mark">Ethics</aside><p>The evaluation archive is the personal photo library of one of the authors, used with their consent. Identifiable third parties appearing in the archive consented to its research use, or the corresponding items were excluded. All processing of personal media, including face detection and entity resolution, ran locally; no raw media leaves the device, and only the author-approved structured examples named in the paper are disclosed. The archive itself will not be released. We note the dual-use surface of personal-context systems: the same structure that serves its owner could, if exfiltrated or built without consent, enable surveillance or profiling. The PWM's design choices (on-device processing, need-to-know structured egress, user-confirmed identities, and user ownership of the store) are intended as mitigations, and we encourage future work to treat them as requirements. Extensions to modalities where third-party content dominates (communication traces in particular) would require consent mechanisms beyond those photos demand.</p>
 
   <div class="endmatter">
-    <p><small>Appendices (evaluation details, the anticipation probe, and the MCP tool surface) and full references are in the <a href="pwm.pdf">PDF</a>. The evaluation harness, stage prompts, judge rubrics, and configurations are in the <a href="supplement/README.md">supplement</a>. Archived at <a href="https://doi.org/10.5281/zenodo.21655904">doi:10.5281/zenodo.21655904</a>.</small></p>
+    <p><small>Appendices (evaluation details, the anticipation probe, and the MCP tool surface) and full references are in the <a href="pwm.pdf">PDF</a>. The evaluation harness, stage prompts, judge rubrics, and configurations are in the <a href="https://github.com/personalworldmodels/personalworldmodels.github.io/tree/main/docs/supplement">supplement</a>. Archived at <a href="https://doi.org/10.5281/zenodo.21655904">doi:10.5281/zenodo.21655904</a>.</small></p>
     <p class="bibhead" id="bibtex">BibTeX</p>
     <pre class="bibtex">@misc{azab2026pwm,
   title  = {Personal World Models},
@@ -263,10 +267,10 @@
   <p class="line"><b>0</b> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</p>
 </div>
 <script>
-  const els = document.querySelectorAll("article p, article h2, article h3, article blockquote, article figure, article table, article li, aside.mn");
+  const els = document.querySelectorAll("article p, article h2, article h3, article blockquote, article figure, .twrap");
   els.forEach(e => e.classList.add("fade"));
   const io = new IntersectionObserver(entries => {
-    for (const en of entries) en.target.classList.toggle("vis", en.isIntersecting);
+    for (const en of entries) if (en.isIntersecting) { en.target.classList.add("vis"); io.unobserve(en.target); }
   }, { rootMargin: "-4% 0px -4% 0px", threshold: 0 });
   els.forEach(e => io.observe(e));
 </script>
