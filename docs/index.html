@@ -146,9 +146,10 @@
   <section class="tldr">
   <p class="tl-head"><b>tl;dr</b></p>
   <ul>
-    <li>Your life is recorded everywhere. AI can only search the records: it can find a moment, it cannot know your life.</li>
-    <li>We built the <b>Personal World Model</b>: a life compressed into structure any model can read and anticipate from. Photos first; every modality a life leaves behind, next.</li>
-    <li>Tested on a real life against GraphRAG, Supermemory, Mem0, and Zep: we score 46 of 100. GraphRAG scores 30. Zep scores 6. On questions that span a lifetime, every baseline scores zero.</li>
+    <li>Memory is a compression problem. AI can search a life&rsquo;s records; it cannot know the life.</li>
+    <li>The <b>Personal World Model</b> compresses a life into structure any model can read and anticipate from. Photos first; every modality a life leaves behind, next.</li>
+    <li><b>Golgi</b>, our engine, turns 720K tokens of raw life into a structure an agent traverses in hundreds.</li>
+    <li>Tested against GraphRAG, Supermemory, Mem0, and Zep: we score 46 of 100. GraphRAG scores 30. Zep scores 6. On questions that span a lifetime, every baseline scores zero.</li>
     <li>The advantage is causal: corrupt the structure and answers collapse in proportion (<i>r</i> = 0.81).</li>
     <li>It predicts moments it never saw: 32% where the baseline reaches 0%.</li>
     <li>The whole pipeline runs on a 4B model on your own device. Nothing leaves. The model is yours, and it moves with you.</li>
