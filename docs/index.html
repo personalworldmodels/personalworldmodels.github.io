@@ -85,10 +85,14 @@
   thead th { border-bottom: 1px solid #111; font-weight: normal; font-style: italic; }
   .tablecap { font-size: 14px; color: #555; margin-bottom: 1.6em; }
 
-  .endmatter { margin-top: 3em; border-top: 1px solid #111; padding-top: 1.4em; }
-  pre.bibtex { font-family: "Courier New", Courier, monospace; font-size: 13.5px; line-height: 1.5;
-    border: 1px solid #c9c9c9; padding: 1.2em 1.5em; overflow-x: auto; max-width: 33em; }
-  .line { margin-top: 7em; font-size: 11px; color: #c9c9c9; word-spacing: 0.55em; text-align: center; }
+  .endmatter { margin-top: 3.5em; border-top: 1px solid #111; padding-top: 1.3em; }
+  .endmatter p { margin-bottom: 1.6em; }
+  .bibhead { font-variant: small-caps; letter-spacing: 0.14em; font-size: 14px; color: #999;
+    margin: 0 0 0.7em; }
+  pre.bibtex { font-family: "Courier New", Courier, monospace; font-size: 12.5px; line-height: 1.55;
+    border: 1px solid #c9c9c9; padding: 1.1em 1.3em; overflow-x: auto; width: 100%;
+    box-sizing: border-box; margin: 0; }
+  .line { margin-top: 5.5em; font-size: 11px; color: #c9c9c9; word-spacing: 0.55em; text-align: center; }
   .line b { display: inline-block; width: 1.5em; line-height: 1.5em; border: 1px solid #c9c9c9;
     border-radius: 50%; letter-spacing: 0; }
   small { font-size: 15px; color: #555; }
@@ -246,7 +250,7 @@
 
   <div class="endmatter">
     <p><small>Appendices (evaluation details, the anticipation probe, and the MCP tool surface) and full references are in the <a href="pwm.pdf">PDF</a>. The evaluation harness, stage prompts, judge rubrics, and configurations are in the <a href="supplement/README.md">supplement</a>. Archived at <a href="https://doi.org/10.5281/zenodo.21655904">doi:10.5281/zenodo.21655904</a>.</small></p>
-    <h2 id="bibtex">BibTeX</h2>
+    <p class="bibhead" id="bibtex">BibTeX</p>
     <pre class="bibtex">@misc{azab2026pwm,
   title  = {Personal World Models},
   author = {Azab, Hana and Benavente, Mar\'ia},
