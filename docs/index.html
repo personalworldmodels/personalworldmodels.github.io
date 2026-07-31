@@ -37,7 +37,8 @@
   h1 { font-size: 40px; font-weight: normal; margin: 0 0 0.7em; letter-spacing: 0.01em; }
   .authors { margin: 0 0 0.3em; font-size: 18px; }
   .affil { color: #555; font-size: 16px; margin: 0; }
-  .affil a, .authors a { color: inherit; }
+  .affil a, .authors a { color: inherit; text-decoration: none; border-bottom: 1px solid #c9c9c9; }
+  .affil a:hover, .authors a:hover { border-bottom-color: #111; }
   .buttons { text-align: center; margin: 0 0 3em; }
   .buttons a { display: inline-block; border: 1px solid #111; border-radius: 2em;
     padding: 0.35em 1.3em; margin: 0.25em 0.3em; color: #111; text-decoration: none; font-size: 16px; }
@@ -129,16 +130,13 @@
 
   <div class="label"><i></i><i></i><i></i><i></i>
     <h1>Personal World Models</h1>
-    <p class="authors">Hana Azab &middot; Mar&iacute;a Benavente</p>
+    <p class="authors"><a href="https://x.com/_hanaazab">Hana Azab</a> &middot; <a href="https://x.com/merybenavente">Mar&iacute;a Benavente</a></p>
     <p class="affil"><a href="https://www.kinship.inc">Kinship Technologies</a></p>
   </div>
 
   <div class="buttons">
     <a href="pwm.pdf">Paper</a>
-    <a href="https://github.com/personalworldmodels/personalworldmodels.github.io/tree/main/docs/supplement">Supplement</a>
     <a href="golgi-0.1.0-macos-arm64.zip">Package</a>
-    <a href="https://doi.org/10.5281/zenodo.21655904">DOI</a>
-    <a href="#bibtex">BibTeX</a>
   </div>
 
   <figure class="wide hero"><img src="figures/framework.png" width="1919" height="836" style="height:auto" alt="The Personal World Model as a general, model-agnostic layer."></figure>
@@ -271,5 +269,6 @@
   }, { rootMargin: "-4% 0px -4% 0px", threshold: 0 });
   els.forEach(e => io.observe(e));
 </script>
+<script data-goatcounter="https://personalworldmodels.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
